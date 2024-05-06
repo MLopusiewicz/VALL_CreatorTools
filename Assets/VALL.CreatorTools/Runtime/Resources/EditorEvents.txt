@@ -1,0 +1,12 @@
+{
+"stringEvents": [
+"SceneSwitch"
+],
+"colorTimeEvents":[
+"CameraFade"
+],
+"simpleEvents":[
+"CameraBlockStart",
+"CameraBlockStop"
+]
+}

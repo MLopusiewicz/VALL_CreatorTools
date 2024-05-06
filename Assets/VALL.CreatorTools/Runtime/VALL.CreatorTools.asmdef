@@ -1,0 +1,17 @@
+{
+    "name": "VALL.CreatorTools",
+    "rootNamespace": "",
+    "references": [
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:776d03a35f1b52c4a9aed9f56d7b4229"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

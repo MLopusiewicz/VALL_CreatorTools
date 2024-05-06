@@ -9,8 +9,7 @@
   "licensesUrl": "https://github.com/MLopusiewicz/VALL.CreatorTools",
   "dependencies": {
     "com.unity.localization": "1.4.5",
-    "com.unity.nuget.newtonsoft-json": "3.2.1",
-    "com.dbrizov.naughtyattributes": "2.1.4"
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
   },
   "keywords": [
     "VALL",

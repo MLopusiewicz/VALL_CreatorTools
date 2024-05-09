@@ -11,6 +11,7 @@ public class UserTeleportInteraction : MonoBehaviour {
     static List<UserTeleportInteraction> instances;
     public bool snapTeleport;
     public bool teleportRotation;
+    public bool movingPlatform;
 
     public Transform TeleportationTarget;
 
@@ -35,6 +36,6 @@ public class UserTeleportInteraction : MonoBehaviour {
         gameObject.layer = 6;
     }
 #endif
-    
+
 
 }

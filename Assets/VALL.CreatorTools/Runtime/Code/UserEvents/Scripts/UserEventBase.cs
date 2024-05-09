@@ -17,6 +17,7 @@ namespace Vall.Tools.Events {
         public TimeSettings timeSettings = new TimeSettings(0);
         static CoroutineObject coroutineObject;
 
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
         public void Fire() {
             if (coroutineObject == null) {
                 var go = new GameObject("coroutineObject");

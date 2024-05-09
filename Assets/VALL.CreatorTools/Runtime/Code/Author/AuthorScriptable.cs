@@ -4,8 +4,7 @@ using UnityEngine.Localization;
 using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "new Author", menuName = "Vall/Author", order = 1)]
-public class AuthorScriptable : ScriptableObject {
-    public const string version = "1.0.0"; 
+public class AuthorScriptable : ScriptableObject { 
 
     [SerializeField] string guid;
     public string givenName;

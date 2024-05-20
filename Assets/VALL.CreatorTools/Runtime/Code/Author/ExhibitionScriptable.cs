@@ -8,11 +8,10 @@ public class ExhibitionScriptable : ScriptableObject {
 
     public string ID;
     public string authorID;
-    public string sceneFileName;
     public Sprite img;
 
-    public LocalizedString title;
-    public LocalizedString info;
+    public string title;
+    public string info;
 
-    public AssetReference EntryScene;
+    public string EntryScene;
 }

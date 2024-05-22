@@ -14,24 +14,15 @@ namespace Vall.Tools.Events {
         [Dropdown("GetEvents")]
         public string key;
 
-        public TimeSettings timeSettings = new TimeSettings(0);
-        static CoroutineObject coroutineObject;
+
 
         [Button(enabledMode: EButtonEnableMode.Playmode)]
         public void Fire() {
-            if (coroutineObject == null) {
-                var go = new GameObject("coroutineObject");
-                coroutineObject = go.AddComponent<CoroutineObject>();
-            }
-            coroutineObject.StartCoroutine(DelayCoroutine(timeSettings.delay));
+            OnFire?.Invoke(this);
         }
 
         public abstract object[] GetParams();
 
-        IEnumerator DelayCoroutine(float time) {
-            yield return new WaitForSecondsRealtime(time);
-            OnFire?.Invoke(this);
-        }
 
         protected EventDatabase eventsData {
             get {
@@ -48,13 +39,5 @@ namespace Vall.Tools.Events {
 
     }
 
-    public struct TimeSettings {
-        public float delay;
-
-        public TimeSettings(float delay) {
-            this.delay = delay;
-
-        }
-    }
 
 }

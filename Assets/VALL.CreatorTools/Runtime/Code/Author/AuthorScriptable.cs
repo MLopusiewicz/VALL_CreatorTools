@@ -12,5 +12,5 @@ public class AuthorScriptable : ScriptableObject {
     public Guid id => new Guid(guid);
 
     [FormerlySerializedAs("loc")]
-    public string info;
+    public LocalizedString info;
 }

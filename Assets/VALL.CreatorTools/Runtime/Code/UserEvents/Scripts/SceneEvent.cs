@@ -6,7 +6,7 @@ using Vall.Tools.Events;
 
 [CreateAssetMenu(fileName = "MyEvent", menuName = "VALL/Events/SceneChangeEvent", order = 0)]
 public class SceneEvent : UserEventBase {
-    public AssetReference scene;
+    public SceneAssetReference scene;
     public override object[] GetParams() {
         return new object[] { scene };
     }

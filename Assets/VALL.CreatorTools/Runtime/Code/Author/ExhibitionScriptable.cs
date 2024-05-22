@@ -10,8 +10,8 @@ public class ExhibitionScriptable : ScriptableObject {
     public string authorID;
     public Sprite img;
 
-    public string title;
-    public string info;
+    public LocalizedString title;
+    public LocalizedString info;
 
-    public string EntryScene;
+    public SceneAssetReference EntryScene;
 }

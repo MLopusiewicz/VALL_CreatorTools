@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.IO;
 using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEditor;
@@ -5,14 +6,16 @@ using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Build;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
+using UnityEditor.Localization;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class CreatorToolsBuildWindow : EditorWindow {
 
     enum Bundle { Author, Exhibition };
     public WindowData data;
     public AddressableAssetGroupTemplate template;
-    [MenuItem("VALL/Builder")]
+    [MenuItem("VALL/Data Builder")]
     public static CreatorToolsBuildWindow GetWindow() {
         return EditorWindow.GetWindow<CreatorToolsBuildWindow>();
     }
@@ -41,6 +44,10 @@ public class CreatorToolsBuildWindow : EditorWindow {
 
         serializedData.ApplyModifiedProperties();
 
+
+        if (GUILayout.Button("MoveLocalization")) {
+            MoveLocales();
+        }
     }
 
     private void BuildBundle(Bundle b) {
@@ -164,6 +171,23 @@ public class CreatorToolsBuildWindow : EditorWindow {
         settings.ShaderBundleNaming = ShaderBundleNaming.Custom;
         settings.ShaderBundleCustomNaming = e.ID;
         settings.MonoScriptBundleNaming = MonoScriptBundleNaming.Disabled;
+
+
+    }
+
+
+    void MoveLocales() {
+        var exhb = GetExhibiton();
+        MoveLocales(exhb.info, Bundle.Exhibition);
+
+        var author = GetAuthor();
+        MoveLocales(author.info, Bundle.Author);
+    }
+
+    private AuthorScriptable GetAuthor() {
+        var authorAssetGUID = AssetDatabase.FindAssets($"t:{nameof(AuthorScriptable)}")[0];
+        return AssetDatabase.LoadAssetAtPath<AuthorScriptable>(AssetDatabase.GUIDToAssetPath(authorAssetGUID));
+
     }
 
     ExhibitionScriptable GetExhibiton() {
@@ -171,4 +195,30 @@ public class CreatorToolsBuildWindow : EditorWindow {
         return AssetDatabase.LoadAssetAtPath<ExhibitionScriptable>(AssetDatabase.GUIDToAssetPath(authorAssetGUID));
     }
 
+
+    void MoveLocales(LocalizedString localization, Bundle bundle) {
+        var collection = LocalizationEditorSettings.GetStringTableCollection(localization.TableReference);
+        MoveToGroup(collection, bundle);
+        foreach (var a in collection.Tables) {
+            MoveToGroup(a.asset, bundle, $"Locale-{a.asset.LocaleIdentifier.Code}");
+        }
+        MoveToGroup(collection.SharedData, bundle);
+
+    }
+
+    void MoveToGroup(Object o, Bundle b, params string[] labels) {
+
+        var g = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(o));
+        AddressableAssetEntry entry;
+        if (b == Bundle.Author)
+            entry = settings.CreateOrMoveEntry(g, GetAuthorGroup());
+        else
+            entry = settings.CreateOrMoveEntry(g, GetExhibitionGroup());
+
+        foreach (var a in labels)
+            entry.SetLabel(a, true, true);
+
+        settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entry, true);
+
+    }
 }

@@ -9,6 +9,7 @@ using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using UnityEditor.Localization;
 using UnityEngine;
 using UnityEngine.Localization;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class CreatorToolsBuildWindow : EditorWindow {
 
@@ -28,8 +29,10 @@ public class CreatorToolsBuildWindow : EditorWindow {
         serializedData = new SerializedObject(data);
         EditorGUILayout.PropertyField(serializedData.FindProperty("targetPath"));
         if (GUILayout.Button("SetupPackage")) {
-            GetAuthorGroup();
             GetExhibitionGroup();
+            GetAuthorGroup();
+            var def = settings.DefaultGroup;
+            ApplyPaths(def);
         }
         if (GUILayout.Button("Build Author")) {
             BuildBundle(Bundle.Author);
@@ -63,6 +66,7 @@ public class CreatorToolsBuildWindow : EditorWindow {
             if (z != null)
                 z.IncludeInBuild = false;
         }
+        settings.DefaultGroup.GetSchema<BundledAssetGroupSchema>().IncludeInBuild = true;
         AddGroupToBuildByName(b.ToString());
 
         settings.activeProfileId = settings.profileSettings.GetProfileId(b.ToString());
@@ -95,6 +99,7 @@ public class CreatorToolsBuildWindow : EditorWindow {
     AddressableAssetGroup GetAuthorGroup() {
         foreach (var a in settings.groups) {
             if (a.Name == Bundle.Author.ToString()) {
+                ApplyPaths(a);
                 return a;
             }
         }
@@ -110,6 +115,8 @@ public class CreatorToolsBuildWindow : EditorWindow {
         var entry = settings.CreateOrMoveEntry(authorAssetGUID, g, false, false);
         entry.SetLabel(Bundle.Author.ToString(), true, true, true);
         settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entry, true);
+
+        ApplyPaths(g);
         return g;
     }
 
@@ -117,6 +124,7 @@ public class CreatorToolsBuildWindow : EditorWindow {
         var settings = AddressableAssetSettingsDefaultObject.Settings;
         foreach (var a in settings.groups) {
             if (a.Name == Bundle.Exhibition.ToString()) {
+                ApplyPaths(a);
                 return a;
             }
         }
@@ -131,6 +139,7 @@ public class CreatorToolsBuildWindow : EditorWindow {
         var entry = settings.CreateOrMoveEntry(exhbAssetGUID, g, false, false);
         entry.SetLabel(Bundle.Exhibition.ToString(), true, true, true);
         settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entry, true);
+        ApplyPaths(g);
         return g;
     }
 
@@ -221,4 +230,16 @@ public class CreatorToolsBuildWindow : EditorWindow {
         settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entry, true);
 
     }
+
+
+    void ApplyPaths(AddressableAssetGroup g) {
+        var schema = g.GetSchema<BundledAssetGroupSchema>();
+        schema.BuildPath.SetVariableByName(settings, "Remote.BuildPath");
+        schema.LoadPath.SetVariableByName(settings, "Remote.LoadPath");
+        settings.SetDirty(AddressableAssetSettings.ModificationEvent.GroupSchemaModified, schema, true);
+
+        settings.RemoteCatalogBuildPath.SetVariableByName(settings, "Remote.BuildPath");
+        settings.RemoteCatalogLoadPath.SetVariableByName(settings, "Remote.LoadPath");
+    }
+
 }

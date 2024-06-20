@@ -1,6 +1,4 @@
-using NUnit.Framework;
 using System.IO;
-using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Build;
@@ -9,7 +7,6 @@ using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using UnityEditor.Localization;
 using UnityEngine;
 using UnityEngine.Localization;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class CreatorToolsBuildWindow : EditorWindow {
 
@@ -27,7 +24,15 @@ public class CreatorToolsBuildWindow : EditorWindow {
 
     private void OnGUI() {
         serializedData = new SerializedObject(data);
-        EditorGUILayout.PropertyField(serializedData.FindProperty("targetPath"));
+        using (new UnityEditor.EditorGUILayout.HorizontalScope()) { 
+            GUILayout.Label("Folder", GUILayout.Width(50));
+            EditorGUILayout.PropertyField(serializedData.FindProperty("targetPath"), new GUIContent(""));
+            if (GUILayout.Button(EditorGUIUtility.IconContent("d_Project"), GUILayout.Width(32))) {
+                var p = UnityEditor.EditorUtility.OpenFolderPanel("", serializedData.FindProperty("targetPath").stringValue, "StreamingAssets");
+                if (p != null && p != "" && p.EndsWith("StreamingAssets"))
+                    serializedData.FindProperty("targetPath").stringValue = p;
+            }
+        }
         if (GUILayout.Button("SetupPackage")) {
             GetExhibitionGroup();
             GetAuthorGroup();
@@ -243,3 +248,5 @@ public class CreatorToolsBuildWindow : EditorWindow {
     }
 
 }
+
+

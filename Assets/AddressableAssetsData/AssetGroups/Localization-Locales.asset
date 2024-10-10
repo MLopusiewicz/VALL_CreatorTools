@@ -10,21 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Localization-Locales
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Localization-Locales
   m_Data:
     m_SerializedData: []
-  m_GUID: 72dc9632c1f50a64bb88bc91edd6582e
+  m_GUID: b14834a425354ca45b8e0eebe14a244b
   m_SerializeEntries:
-  - m_GUID: f52a249ebcdc05f4fadc7b39cc3f67fd
-    m_Address: Assets/Scene.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  - m_GUID: 6f92417f94b77304395602cb7e79dba9
+    m_Address: English (en)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
     FlaggedDuringContentUpdateRestriction: 0
-  m_ReadOnly: 0
+  - m_GUID: c95462e1dd8d80d49803789c4626d96c
+    m_Address: Polish (pl)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 70d27f5435fbc8e4ebd6d2f102e83e9e, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: ce3d007120daea044a1e8de8271cb714, type: 2}
-    - {fileID: 11400000, guid: bfebd303f23025f4ba44cf8131979473, type: 2}
+    - {fileID: 11400000, guid: 060b1dd053f2fa5459d59ec509d4586f, type: 2}
+    - {fileID: 11400000, guid: 9021e1b17c7c1634aaf8a897113136f5, type: 2}

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336d34f7d55291a4b9cf43d7acc8a20b, type: 3}
+  m_Name: ExhibitionInfo
+  m_EditorClassIdentifier: 
+  ID: 7ad1a2a6-b2fd-42c9-886f-9fdf21e73d90
+  authorID: 7ad1a2a6-b2fd-42c9-886f-9fdf21e73d90
+  img: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  title:
+    m_TableReference:
+      m_TableCollectionName: GUID:6658e0c29e2634e4e93ecfda8fa91adc
+    m_TableEntryReference:
+      m_KeyId: 5279215616
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  info:
+    m_TableReference:
+      m_TableCollectionName: GUID:6658e0c29e2634e4e93ecfda8fa91adc
+    m_TableEntryReference:
+      m_KeyId: 5279215616
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  EntryScene:
+    m_AssetGUID: f52a249ebcdc05f4fadc7b39cc3f67fd
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  references:
+    version: 2
+    RefIds: []

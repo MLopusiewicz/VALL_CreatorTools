@@ -127,8 +127,10 @@ public static class DataValidator {
 
         var exhb = HelperFunctions.GetExhibiton();
         AddressablesManipulator.MoveToGroup(exhb, BundleBuilder.Bundle.Exhibition, BundleBuilder.Bundle.Exhibition.ToString());
+        AddressablesManipulator.MoveToGroup(AssetDatabase.LoadAssetAtPath<SceneAsset>(AssetDatabase.GUIDToAssetPath(exhb.EntryScene.AssetGUID)), BundleBuilder.Bundle.Exhibition, BundleBuilder.Bundle.Exhibition.ToString());
         HelperFunctions.MoveLocales(exhb.title, BundleBuilder.Bundle.Exhibition);
         HelperFunctions.MoveLocales(exhb.info, BundleBuilder.Bundle.Exhibition);
+
         return true;
     }
 

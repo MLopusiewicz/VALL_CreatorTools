@@ -8,7 +8,7 @@ public static class DataValidator {
     static List<Func<bool>> ValidationChain = new() {
         ValidateAuthor,
         ValidateExhibition,
-        ValidateProfiles,
+        ValidateAddressableSetup,
         ValidateAuthorGroup,
         ValidateExhibitionGroup
     };
@@ -134,8 +134,9 @@ public static class DataValidator {
         return true;
     }
 
-    private static bool ValidateProfiles() {
+    private static bool ValidateAddressableSetup() {
         AddressablesManipulator.CreateProfiles();
+        AddressablesManipulator.SetDefaultGroupRemote();
         return true;
     }
 

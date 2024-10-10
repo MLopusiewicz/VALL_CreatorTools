@@ -17,28 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e5339df0fe026164786f6e91b6f8172f
   m_SerializeEntries:
-  - m_GUID: 386e5be9b17b2374db2d174c92069ba0
-    m_Address: Assets/Test/Locales/New Table_pl.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Locale-pl
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3d6db8613ee038945b9f843da53ad077
-    m_Address: Assets/Test/Locales/New Table.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6658e0c29e2634e4e93ecfda8fa91adc
-    m_Address: Assets/Test/Locales/New Table Shared Data.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 687bbe9efd810e3408a9d0035ed75123
-    m_Address: Assets/Test/Locales/New Table_en.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Locale-en
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a875002cdeeab344b90db551ddf097a1
     m_Address: Assets/Test/new Author.asset
     m_ReadOnly: 0

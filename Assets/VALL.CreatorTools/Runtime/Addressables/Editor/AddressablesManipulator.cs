@@ -111,5 +111,7 @@ public class AddressablesManipulator {
 
     }
 
-
+    public static void SetDefaultGroupRemote() {
+        ApplyPaths(settings.DefaultGroup);
+    }
 }

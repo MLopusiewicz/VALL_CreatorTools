@@ -11,9 +11,9 @@ public class CreatorToolsBuildWindow : EditorWindow {
     const string OK_ICON = "d_FilterSelectedOnly@2x";
 
 
-    [MenuItem("VALL/Data Builder")]
+    [MenuItem("VALL/Builder")]
     public static CreatorToolsBuildWindow GetWindow() {
-        return EditorWindow.GetWindow<CreatorToolsBuildWindow>();
+        return EditorWindow.GetWindow<CreatorToolsBuildWindow>("VALL Builder");
     }
     SerializedObject serializedData;
 

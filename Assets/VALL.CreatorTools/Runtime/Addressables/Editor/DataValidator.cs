@@ -43,7 +43,7 @@ public static class DataValidator {
         var obj = AssetDatabase.LoadAssetAtPath<AuthorScriptable>(AssetDatabase.GUIDToAssetPath(g[0]));
 
         if (obj.id == Guid.Empty) {
-            Debug.LogError("[VALL] Author's guid cannot be empty");
+            Debug.LogError("[VALL] Author's guid incorrect or empty");
             return false;
         }
         if (obj.givenName == string.Empty) {

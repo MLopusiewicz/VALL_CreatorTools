@@ -9,8 +9,16 @@ public class AuthorScriptable : ScriptableObject {
     [SerializeField] string guid;
     public string givenName;
     public Sprite img;
-    public Guid id => guid == null || guid == "" ? Guid.Empty : new Guid(guid);
+    public Guid id => GetId();
 
     [FormerlySerializedAs("loc")]
     public LocalizedString info;
+
+    public Guid GetId() {
+        if (guid == null || guid == "")
+            return Guid.Empty;
+        if (Guid.TryParse(guid, out var gg)) { return gg; }
+
+        return Guid.Empty;
+    }
 }

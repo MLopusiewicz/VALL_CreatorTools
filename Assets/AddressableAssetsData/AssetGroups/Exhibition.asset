@@ -24,7 +24,7 @@ MonoBehaviour:
     - Exhibition
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 386e5be9b17b2374db2d174c92069ba0
-    m_Address: Assets/Test/Locales/New Table_pl.asset
+    m_Address: New Table_pl
     m_ReadOnly: 0
     m_SerializedLabels:
     - Locale-pl
@@ -40,7 +40,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 687bbe9efd810e3408a9d0035ed75123
-    m_Address: Assets/Test/Locales/New Table_en.asset
+    m_Address: New Table_en
     m_ReadOnly: 0
     m_SerializedLabels:
     - Locale-en

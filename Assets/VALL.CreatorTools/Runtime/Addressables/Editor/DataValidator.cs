@@ -6,17 +6,37 @@ using UnityEngine;
 
 public static class DataValidator {
     static List<Func<bool>> ValidationChain = new() {
-        ValidateAuthor,
-        ValidateExhibition,
+        ValidateAuthorFile,
+        ValidateExhibitionFile,
         ValidateAddressableSetup,
         ValidateAuthorGroup,
         ValidateExhibitionGroup
     };
-
+    static List<Func<bool>> AuthorValidationChain = new() {
+        ValidateAuthorFile,
+        ValidateAddressableSetup,
+        ValidateAuthorGroup
+    };
+    static List<Func<bool>> ExhibitionValidationChaind = new() {
+        ValidateExhibitionFile,
+        ValidateAddressableSetup,
+        ValidateExhibitionGroup
+    };
 
     public static bool ValidateAll() {
 
-        foreach (var a in ValidationChain) {
+        return ValidateChain(ValidationChain);
+    }
+
+    public static bool ValidateAuthor() {
+        return ValidateChain(AuthorValidationChain);
+    }
+    public static bool ValidateExhibition() {
+        return ValidateChain(ExhibitionValidationChaind);
+    }
+
+    static bool ValidateChain(List<Func<bool>> chain) {
+        foreach (var a in chain) {
             try {
                 var result = a?.Invoke();
                 if (result == false)
@@ -28,9 +48,10 @@ public static class DataValidator {
 
         }
         return true;
+
     }
 
-    public static bool ValidateAuthor() {
+    public static bool ValidateAuthorFile() {
         var g = AssetDatabase.FindAssets($"t:{nameof(AuthorScriptable)}");
         if (g.Length == 0) {
             Debug.LogError("[VALL] No author found");
@@ -63,7 +84,7 @@ public static class DataValidator {
         return true;
     }
 
-    public static bool ValidateExhibition() {
+    public static bool ValidateExhibitionFile() {
         var g = AssetDatabase.FindAssets($"t:{nameof(ExhibitionScriptable)}");
 
         if (g.Length == 0) {

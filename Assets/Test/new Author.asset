@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guid: 7ad1a2a6-b2fd-42c9-886f-9fdf21e73d90
   givenName: asdf
-  img: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  img: {fileID: 0}
   info:
     m_TableReference:
       m_TableCollectionName: GUID:6658e0c29e2634e4e93ecfda8fa91adc

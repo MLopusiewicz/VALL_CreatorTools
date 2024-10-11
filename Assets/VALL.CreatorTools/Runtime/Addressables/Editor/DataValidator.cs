@@ -1,8 +1,10 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public static class DataValidator {
     static List<Func<bool>> ValidationChain = new() {
@@ -10,8 +12,10 @@ public static class DataValidator {
         ValidateExhibitionFile,
         ValidateAddressableSetup,
         ValidateAuthorGroup,
-        ValidateExhibitionGroup
+        ValidateExhibitionGroup,
+        ValidateSceneFile
     };
+
     static List<Func<bool>> AuthorValidationChain = new() {
         ValidateAuthorFile,
         ValidateAddressableSetup,
@@ -20,7 +24,8 @@ public static class DataValidator {
     static List<Func<bool>> ExhibitionValidationChaind = new() {
         ValidateExhibitionFile,
         ValidateAddressableSetup,
-        ValidateExhibitionGroup
+        ValidateExhibitionGroup,
+        ValidateSceneFile
     };
 
     public static bool ValidateAll() {
@@ -51,7 +56,8 @@ public static class DataValidator {
 
     }
 
-    public static bool ValidateAuthorFile() {
+
+    static bool ValidateAuthorFile() {
         var g = AssetDatabase.FindAssets($"t:{nameof(AuthorScriptable)}");
         if (g.Length == 0) {
             Debug.LogError("[VALL] No author found");
@@ -84,7 +90,8 @@ public static class DataValidator {
         return true;
     }
 
-    public static bool ValidateExhibitionFile() {
+
+    static bool ValidateExhibitionFile() {
         var g = AssetDatabase.FindAssets($"t:{nameof(ExhibitionScriptable)}");
 
         if (g.Length == 0) {
@@ -132,7 +139,8 @@ public static class DataValidator {
         return true;
     }
 
-    public static bool ValidateAuthorGroup() {
+
+    static bool ValidateAuthorGroup() {
         if (AddressablesManipulator.GetGroup(BundleBuilder.Bundle.Author) == null)
             AddressablesManipulator.CreateGroup(BundleBuilder.Bundle.Author);
 
@@ -142,7 +150,8 @@ public static class DataValidator {
         HelperFunctions.MoveLocales(author.info, BundleBuilder.Bundle.Author);
         return true;
     }
-    public static bool ValidateExhibitionGroup() {
+
+    static bool ValidateExhibitionGroup() {
         if (AddressablesManipulator.GetGroup(BundleBuilder.Bundle.Exhibition) == null)
             AddressablesManipulator.CreateGroup(BundleBuilder.Bundle.Exhibition);
 
@@ -155,9 +164,19 @@ public static class DataValidator {
         return true;
     }
 
-    private static bool ValidateAddressableSetup() {
+
+    static bool ValidateAddressableSetup() {
         AddressablesManipulator.CreateProfiles();
         AddressablesManipulator.SetDefaultGroupRemote();
+        return true;
+    }
+
+    static bool ValidateSceneFile() {
+        var g = AssetDatabase.FindAssets($"t:{nameof(ExhibitionScriptable)}");
+        var obj = AssetDatabase.LoadAssetAtPath<ExhibitionScriptable>(AssetDatabase.GUIDToAssetPath(g[0]));
+        var path = AssetDatabase.GUIDToAssetPath(obj.EntryScene.AssetGUID);
+        var sceneAsset = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+        AddressablesManipulator.MoveToGroup(sceneAsset, BundleBuilder.Bundle.Exhibition, BundleBuilder.Bundle.Exhibition.ToString(), obj.ID, "EntryScene");
         return true;
     }
 

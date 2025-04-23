@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7de7e4744e81a4081c4fd0d5bfb949, type: 3}
   m_Name: WindowData
   m_EditorClassIdentifier: 
-  targetPath: asdf
+  targetPath: Path to destination folder

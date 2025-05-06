@@ -1,10 +1,7 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 public static class DataValidator {
     static List<Func<bool>> ValidationChain = new() {
@@ -176,7 +173,7 @@ public static class DataValidator {
         var obj = AssetDatabase.LoadAssetAtPath<ExhibitionScriptable>(AssetDatabase.GUIDToAssetPath(g[0]));
         var path = AssetDatabase.GUIDToAssetPath(obj.EntryScene.AssetGUID);
         var sceneAsset = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
-        AddressablesManipulator.MoveToGroup(sceneAsset, BundleBuilder.Bundle.Exhibition, BundleBuilder.Bundle.Exhibition.ToString(), obj.ID, "EntryScene");
+        AddressablesManipulator.MoveToGroup(sceneAsset, BundleBuilder.Bundle.Exhibition, BundleBuilder.Bundle.Exhibition.ToString(), obj.ID, "EntryScene", "");
         return true;
     }
 

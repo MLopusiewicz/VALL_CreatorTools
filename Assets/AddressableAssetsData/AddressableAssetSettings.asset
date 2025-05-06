@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 72dc9632c1f50a64bb88bc91edd6582e
   m_currentHash:
     serializedVersion: 2
-    Hash: e899f71364570b5d9d7bd4bc085eed1c
+    Hash: bfabf4cad8b495f67fd24c2ada353856
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
@@ -135,6 +135,9 @@ MonoBehaviour:
     - Locale-pl
     - Author
     - Exhibition
+    - 7ad1a2a6-b2fd-42c9-886f-9fdf21e73d90
+    - EntryScene
+    - 
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: b0165554c56d19d4d8a3a5e14b0b2b96, type: 2}

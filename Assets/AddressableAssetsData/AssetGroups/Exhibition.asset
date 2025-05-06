@@ -23,32 +23,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Exhibition
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 386e5be9b17b2374db2d174c92069ba0
-    m_Address: New Table_pl
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Locale-pl
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3d6db8613ee038945b9f843da53ad077
     m_Address: Assets/Test/Locales/New Table.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6658e0c29e2634e4e93ecfda8fa91adc
-    m_Address: Assets/Test/Locales/New Table Shared Data.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 687bbe9efd810e3408a9d0035ed75123
-    m_Address: New Table_en
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Locale-en
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f52a249ebcdc05f4fadc7b39cc3f67fd
     m_Address: Assets/Scene.unity
     m_ReadOnly: 0
     m_SerializedLabels:
+    - 
+    - 7ad1a2a6-b2fd-42c9-886f-9fdf21e73d90
+    - EntryScene
     - Exhibition
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
